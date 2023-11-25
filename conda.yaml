@@ -9,13 +9,10 @@ dependencies:
   - python=3.10.12                # https://pyreadiness.org/3.10
   - pip=23.2.1                    # https://pip.pypa.io/en/stable/news
   - robocorp-truststore=0.8.0     # https://pypi.org/project/robocorp-truststore/
+  - psycopg2
   - pip:
-    - robocorp==1.2.1             # https://pypi.org/project/robocorp
+    - robocorp==1.2.4             # https://pypi.org/project/robocorp
     - robocorp-browser==2.2.1     # https://pypi.org/project/robocorp-browser
     - timescale-vector==0.0.3
-    - openai==0.28.1
-    - llama-index==0.8.62
-
-rccPostInstall:
-  - pip install psycopg2
-  - pip install psycopg2-binary
+    - openai==1.3.5
+    - llama-index==0.9.7
