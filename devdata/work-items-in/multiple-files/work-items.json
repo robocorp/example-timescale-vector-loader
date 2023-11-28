@@ -1,0 +1,11 @@
+[
+  {
+      "payload": {
+         "message": "Hello World!"
+      },
+      "files": {
+          "rule1.pdf": "rule1.pdf",
+          "rule2.pdf": "rule2.pdf"
+      }
+  }
+]

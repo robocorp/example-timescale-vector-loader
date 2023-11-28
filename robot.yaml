@@ -2,8 +2,11 @@
 # https://github.com/robocorp/rcc/blob/master/docs/recipes.md#what-is-in-robotyaml
 
 tasks:
-  Minimal Task:
-    shell: python -m robocorp.tasks run tasks.py
+  Data Loader:
+    shell: python -m robocorp.tasks run tasks.py -t my_timescale_loader
+  Do a Query:
+    shell: python -m robocorp.tasks run tasks.py -t query_from_vectordb
+
 
 environmentConfigs:
   - environment_windows_amd64_freeze.yaml

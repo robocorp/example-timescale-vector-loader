@@ -1,0 +1,10 @@
+[
+  {
+      "payload": {
+         "message": "Hello World!"
+      },
+      "files": {
+          "state_of_the_union.txt": "state_of_the_union.txt"
+      }
+  }
+]

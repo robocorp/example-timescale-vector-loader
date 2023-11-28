@@ -1,0 +1,27 @@
+[
+  {
+    "payload": {
+      "email": {
+        "messageId": "<CAN8tuPEMCktis-dZa7NXxHvzf7FE8aX69uKfR1M1-xxxxxx@mail.gmail.com>",
+        "from": {
+          "name": "Some sender",
+          "address": "your.gmail.email@domain.com"
+        },
+        "to": [
+          {
+            "name": "",
+            "address": "process.robocorp.emailreplyto.xxxxxxxxxx@mail.eu1.robocloud.eu"
+          }
+        ],
+        "cc": [],
+        "bcc": [],
+        "subject": "IEA global hydrogen report",
+        "date": "2023-09-27T10:59:53.000Z",
+        "text": "Hi there,\nI want to know what is the cost of green hydrogen from solar PV today in different geographic locations?\nFor decentralized hydrogen production, which geography is the best? Thanks!"
+      }
+    },
+      "files": {
+          "GlobalHydrogenReview2023.pdf": "GlobalHydrogenReview2023.pdf"
+      }
+  }
+]
