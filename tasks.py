@@ -15,13 +15,16 @@ def my_timescale_loader():
 
     TIMESCALE_SERVICE_URL = setup()
 
-    # Get work item files and store to local data folder temporatily.
+    # Work Items are task inputs provided by Robocorp Control Room. 
+    # They can contain JSON payloads, and file attachments. In case of email trigger,
+    # Control Room automatically maps the email contents to a Work Item. In this case,
+    # we are only interested in the files. This loops through all input Work Items and
+    # stores all theavailable files to a local "data" folder in the execution environment.
     for input in workitems.inputs:
         input.get_files("*", "data")
 
     # Read documents
     documents = SimpleDirectoryReader("data").load_data()
-    print("Document ID:", documents[0].doc_id)
 
     # Create a TimescaleVectorStore object
     vector_store = TimescaleVectorStore.from_params(
