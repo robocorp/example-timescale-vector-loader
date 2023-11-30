@@ -47,13 +47,12 @@ In this case there is a small trick needed.
 
 ```yaml
 dependencies:
-  - python=3.10.12                # https://pyreadiness.org/3.10
-  - pip=23.2.1                    # https://pip.pypa.io/en/stable/news
-  - robocorp-truststore=0.8.0     # https://pypi.org/project/robocorp-truststore/
-  - psycopg2=2.9.7                # https://pypi.org/project/psycopg2/
+  - python=3.10.12
+  - pip=23.2.1
+  - robocorp-truststore=0.8.0 
+  - psycopg2=2.9.7 
   - pip:
-    - robocorp==1.2.4             # https://pypi.org/project/robocorp
-    - robocorp-browser==2.2.1     # https://pypi.org/project/robocorp-browser
+    - robocorp==1.2.4             
     - timescale-vector==0.0.3
     - openai==1.3.5
     - llama-index==0.9.7
