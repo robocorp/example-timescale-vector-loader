@@ -12,7 +12,6 @@ dependencies:
   - psycopg2=2.9.7                # https://pypi.org/project/psycopg2/
   - pip:
     - robocorp==1.2.4             # https://pypi.org/project/robocorp
-    - robocorp-browser==2.2.1     # https://pypi.org/project/robocorp-browser
     - timescale-vector==0.0.3
     - openai==1.3.5
     - llama-index==0.9.7
