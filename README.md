@@ -134,7 +134,7 @@ After running something locally, check the Robo Task Output to see what the run 
 
 <img width="1411" alt="logs" src="https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/a87f5ea5-cc03-4d78-95e9-56c5fc4a7de2">
 
-## Going cloud
+## Going cloud ☁️
 
 Now that all runs locally, time to go production-grade. In this section we'll do the following things: upload the project to the Control Room, create a process out of it, set up an email trigger and test it.
 
@@ -142,10 +142,40 @@ Now that all runs locally, time to go production-grade. In this section we'll do
 
 While you can upload your project directly from VS Code to the Control Room (Command Palette - Robocorp: Upload Robot to the Control Room), the recommended way is to do it via the git repo. You may fork this repo to your own, or simply just use our example repo directly.
 
+It's easy: Tasks tab under your Workspace, Add Task Package, give it a name, and paste the link to the repo. Done.
+
 ![create-tasks](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/95cf3b7f-6604-4f68-8455-bbef780ce954)
+
+### 2. Create a Process
+
+Next up, you'll need to create a Process. Tasks are reusable components that you can use to build sequences of actions. When creating a Process you'll map your chosen Tasks with the Worker runtimes.
+
+Follow the UI again, as the video below shows. Processes, Create a new Process and add your details.
+
+Once that's done, you'll have an opportunity to either set the scheduling, or create an email trigger. We'll choose the latter. In the last step, you can create alerts and callbacks to Slack, Email and as Webhook calls. In this example we set a Slack notification for both successfull and unsuccessful runs.
 
 ![create-process](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/32a67f01-05c6-4065-a6de-e67fe3a86e92)
 
+### 3. Run it manually
+
+Once the Proces is created, time to run it! Hit the Run Process button and choose Run with Input Data, and give a file as an input. Once the run is complete, your Timescale has embeddings in it! 🤞
+
+<img width="1279" alt="run-process" src="https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/fecb6904-4f5e-427a-aa72-140044bb7f00">
+
+**Tip:** open the Process run for detailed log on the execution.
+
+### 4. Start with email
+
+Pushing this even further, next grab the email address of the process, you'll find it from the Configuration of the Process under Scheduling.
+
 ![email-trigger](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/a1759229-4639-4022-8700-e7a0466ddef1)
 
-![scheduling](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/b6a33046-c215-464a-a57b-11267a282ca2)
+Now what ever you send to that particular email automatically triggers your run, takes the attachments as input files and loads them to your vector database. And remember: you did not write a single line of code that handles emails! ✨ We did it for you.
+
+## Push the boundaries
+
+Now when all the basics work, here are some ideas of what else you could do with Robocorp!
+
+- Build more complex data loaders that e.g. get data from websites and runs on a daily schedule. Here's a [repo](https://robocorp.com/portal/robot/robocorp/example-langchain-data-ingestion) for inspiration.
+- Deploy self-hosted workers so that the data loader has access to data and systems inside your own network.
+- Each Process is callable over Control Room API. Try triggering the load process with an API call.
