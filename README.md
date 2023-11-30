@@ -132,7 +132,7 @@ Second, choose the input Work Item. For the `Data Loader`, try any of the three 
 
 After running something locally, check the Robo Task Output to see what the run did. If anything failed, it's easy to see what went south.
 
-[image here]
+<img width="1411" alt="logs" src="https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/a87f5ea5-cc03-4d78-95e9-56c5fc4a7de2">
 
 ## Going cloud
 
@@ -143,6 +143,8 @@ Now that all runs locally, time to go production-grade. In this section we'll do
 While you can upload your project directly from VS Code to the Control Room (Command Palette - Robocorp: Upload Robot to the Control Room), the recommended way is to do it via the git repo. You may fork this repo to your own, or simply just use our example repo directly.
 
 ![create-tasks](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/95cf3b7f-6604-4f68-8455-bbef780ce954)
+
+![create-process](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/32a67f01-05c6-4065-a6de-e67fe3a86e92)
 
 ![email-trigger](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/a1759229-4639-4022-8700-e7a0466ddef1)
 
