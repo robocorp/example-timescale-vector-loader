@@ -30,7 +30,7 @@ def my_timescale_loader():
     # Create a TimescaleVectorStore object
     vector_store = TimescaleVectorStore.from_params(
         service_url=TIMESCALE_SERVICE_URL,
-        table_name="timescale_robocorp_example2",
+        table_name="timescale_robocorp_example",
     )
 
     # Create a new VectorStoreIndex using the TimescaleVectorStore
