@@ -49,10 +49,10 @@ In this case there is a small trick needed.
 dependencies:
   - python=3.10.12
   - pip=23.2.1
-  - robocorp-truststore=0.8.0 
-  - psycopg2=2.9.7 
+  - robocorp-truststore=0.8.0
+  - psycopg2=2.9.7
   - pip:
-    - robocorp==1.2.4             
+    - robocorp==1.2.4
     - timescale-vector==0.0.3
     - openai==1.3.5
     - llama-index==0.9.7
@@ -72,7 +72,11 @@ tasks:
     shell: python -m robocorp.tasks run tasks.py -t query_from_vectordb
 ```
 
-### Wrap your code in a `@task`
+### 2. Wrap your code in a `@task`
+
+Next step is wrapping your existing code in a method, and add a `@task` decorator. It does bunch of things, for example automatically initializes the intricate logging that Robocorp provides, as well as enable you to run the code easily using the environment just configured in the previous step.
+
+This is what'll you be adding, and all your code goes in to the middle where the comment is:
 
 ```python
 from robocorp.tasks import task
@@ -81,4 +85,60 @@ from robocorp.tasks import task
 def my_timescale_loader():
     # All the things you wanna do
 ```
+
+### 3. Hide the secrets
+
+As we are going to run the code somewhere else than on your own laptop (for example on-demand cloud runtimes), we can't rely on your local environment variables anymore. In the example code we've wrapped all the necessary setup steps in a method, which pulls the necessary credentials from the Robocorp Vault, and sets the necessary (environment) variables. Like this:
+
+```python
+def setup():
+    # Set up all the credentials from Robocorp Vault
+    openai_credentials = vault.get_secret("OpenAI")
+    os.environ["OPENAI_API_KEY"] = openai_credentials["key"]
+    timescale_credentials = vault.get_secret("Timescale")
+    return timescale_credentials["service-url"]
+```
+
+### 4. Use the Work Items
+
+Last but not least, we'll put Work Items in to work.
+
+Our code builds the embeddings from a local folder `data`, so we need to get some stuff in to that folder first. The easiest way is to use work items, which can contain JSON payloads or files. Now we only are interested in files. The fancy part of Robocorp Control Room is that regardless of the way the Task gets triggered, it'll pass the files in as input Work Items. So you could call the Task with an API with files, you can send and email with attachments, or manually start a run with files from the Control Room. In all cases, just these two lines will do the trick.
+
+```python
+for input in workitems.inputs:
+    input.get_files("*", "data")
+```
+
+They'll iterate through all the available Work Items, and save all files to the local `data` folder.
+
+Now you are good to go!
+
+## Running it locally
+
+The tutorial repository contains three example Work Items for easy testing:
+
+- [simple-file](devdata/work-items-in/simple-file/work-items.json) is just one input txt file
+- [multiple-files](devdata/work-items-in/multiple-files/work-items.json) contains two pdf files
+- [email](devdata/work-items-in/email/work-items.json) contains an example of how the email is represented as a Work Item, when sent to Control Room to trigger the run
+
+To run and debug locally in VS Code, the easiest way is through Command Palette (CTRL + Shift + P or Command + Shift + P) and Robocorp: Run Robot. That way the run happens in the environment you have defined.
+
+You'll be prompted for two things.
+
+First, which Task to run. The repo contains two: `Data Loader` is where the beef is. `Do a Query` is there to validate if your data loader actually worked. It creates a simple query engine and runs one query against your database.
+
+Second, choose the input Work Item. For the `Data Loader`, try any of the three available. Or go advanced and create your own test Work Items from the Resources panel in Robocorp Code extension. For the `Do a Query` task, you don't need any work item.
+
+After running something locally, check the Robo Task Output to see what the run did. If anything failed, it's easy to see what went south.
+
+[image here]
+
+## Going cloud
+
+Now that all runs locally, time to go production-grade and put Robocorp properly work. In this section we'll do the following things: upload the project to the Control Room, create a process out of it, set up an email trigger and test it.
+
+### 1. Deploy code to Control Room
+
+While you can upload your project directly from VS Code to the Control Room (Command Palette - Robocorp: Upload Robot to the Control Rom), the recommended way is to do it via the git repo. You may fork this repo to your own, or simply just use our example repo directly.
 

@@ -13,9 +13,10 @@ def my_timescale_loader():
     """Load all data from work item files as vector embeddings to Timescale Vector.
     Uses Llamaindex Simple Directory Reader, supporting multiple file types."""
 
+    # Initialize all things
     TIMESCALE_SERVICE_URL = setup()
 
-    # Work Items are task inputs provided by Robocorp Control Room. 
+    # Work Items are task inputs provided by Robocorp Control Room.
     # They can contain JSON payloads, and file attachments. In case of email trigger,
     # Control Room automatically maps the email contents to a Work Item. In this case,
     # we are only interested in the files. This loops through all input Work Items and
