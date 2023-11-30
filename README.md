@@ -25,7 +25,7 @@ Once all is installed do the following (if you follow the names exactly, the cod
 
 1. Link your development environment to the Robocorp Cloud and your workspace.
 
-[ADD SCREENSHOT]
+<img width="535" alt="robocorp-code" src="https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/c74cc0b6-b212-46d8-a1e1-de131171518a">
 
 2. Create two [Robocorp Vault](https://robocorp.com/docs/development-guide/variables-and-secrets/vault) items that house your secrets:
   - One called `OpenAI` that has one entry called `key` that contains your OpenAI API key.
@@ -33,7 +33,7 @@ Once all is installed do the following (if you follow the names exactly, the cod
 
 You'll find the Service URL from your Timescale console under Connection Info, here:
 
-[ADD SCREENSHOT]
+![timescale-console](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/13d84c94-e1da-45fe-95d5-a8aae6707b3d)
 
 ## Raw Python to Robocorp Task
 
