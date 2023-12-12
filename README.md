@@ -12,7 +12,7 @@ With Robocorp, you can run Python on a scale anywhere. It comes with built-in lo
 
 The video below will show you some of the cool highlights.
 
-[![intro-video](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/55955615-4a01-48a4-826c-991d6f32f34c)](https://www.youtube.com/watch?v=1ExyKcF5jP4)
+[![intro-video](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/2ac6ca36-869a-44c2-ae24-641e1c06728d)](https://www.youtube.com/watch?v=1ExyKcF5jP4)
 
 Let's get going!
 
