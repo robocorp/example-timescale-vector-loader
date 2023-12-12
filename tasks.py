@@ -40,6 +40,14 @@ def my_timescale_loader():
     )
 
 
+def setup():
+    # Set up all the credentials from Robocorp Vault
+    openai_credentials = vault.get_secret("OpenAI")
+    os.environ["OPENAI_API_KEY"] = openai_credentials["key"]
+    timescale_credentials = vault.get_secret("Timescale")
+    return timescale_credentials["service-url"]
+
+
 @task
 def query_from_vectordb():
     """Does a query to an existing Timescale Vector embeddings db using Llamaindex."""
@@ -57,13 +65,7 @@ def query_from_vectordb():
     query_engine = index.as_query_engine()
     # response = query_engine.query("What did the president say about Ketanji Brown Jackson?")
     # response = query_engine.query("Which entities were added to the list?")
-    response = query_engine.query("what is the cost of green hydrogen from solar PV today in different geographic locations?")
+    response = query_engine.query("Which entities from which countries were added to the sanctions list?")
     print(textwrap.fill(str(response), 100))
 
 
-def setup():
-    # Set up all the credentials from Robocorp Vault
-    openai_credentials = vault.get_secret("OpenAI")
-    os.environ["OPENAI_API_KEY"] = openai_credentials["key"]
-    timescale_credentials = vault.get_secret("Timescale")
-    return timescale_credentials["service-url"]
