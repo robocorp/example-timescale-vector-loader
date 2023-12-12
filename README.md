@@ -10,6 +10,10 @@ With Robocorp, you can run Python on a scale anywhere. It comes with built-in lo
 - How to schedule a Task to run on the Robocorp Control Room using on-demand containers
 - How to send an email to your RAG loader to process the attachments - *with zero additional lines of code*
 
+The video below will show you some of the cool highlights.
+
+[![intro-video](https://github.com/robocorp/example-timescale-vector-loader/assets/40179958/55955615-4a01-48a4-826c-991d6f32f34c)](https://www.youtube.com/watch?v=1ExyKcF5jP4)
+
 Let's get going!
 
 ## What you'll need
